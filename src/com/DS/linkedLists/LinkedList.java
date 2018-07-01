@@ -46,6 +46,49 @@ public class LinkedList {
 
 		ll.deleteKeyFromList(6);
 		ll.printList();
+		
+		ll.deleteFromPosition(0);
+		ll.deleteFromPosition(1);
+		ll.deleteFromPosition(2);	
+		ll.printList();
+		
+		
+		ll.deleteFromPosition(1);
+		ll.printList();
+		
+		ll.deleteFromPosition(1);
+		ll.printList();
+
+		ll.deleteFromPosition(1);
+		ll.printList();
+	}
+	
+	void deleteFromPosition(int position)
+	{
+		if (position == 0) {
+			this.head = this.head.next;
+			return;
+		}
+
+		Node Previous = null;
+		Node Current = this.head;
+		
+		// Start loop from head position TO the search position...
+		// If the position is 1, this loop will run only one time as if i becomes 1, condition wont be satisfied.. 
+		for(int i=0; (i<=position -1 && Current != null); i++) {
+			System.out.println("Iteration no " + i + "- pos: " + position);
+			Previous = Current;
+			Current = Current.next;
+		}
+		
+		if (Current == null) { // The position not found in the list..
+			System.out.println("IN");
+			return;
+		}
+		
+		// Assign Previous node's next to Current node's next
+		System.out.println("IN " + Current.data);
+		Previous.next = Current.next;
 	}
 
 	void deleteKeyFromList(int key) {
